@@ -94,6 +94,7 @@ app.get('/homes/:id', (req, res) => {
       connection.query(imageQuery, (error, imageResults, fields) => {
         if (error) reject(error);
         data.images = imageResults
+        data.imageCount = data.images.length
         resolve(data)
       });
     });
@@ -101,6 +102,8 @@ app.get('/homes/:id', (req, res) => {
     .then((data) => { res.send(data) })
     .catch((err) => { res.send(err) })
 })
+
+
 
 
 const port =  3000

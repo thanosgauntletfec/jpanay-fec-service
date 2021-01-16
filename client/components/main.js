@@ -3,22 +3,23 @@ import React from 'react'
 function Main(props) {
   return (
     <div className="whole-container">
-      <div className="image-container">
-
-      <img className="img-lg" src={props.data.images[0].imgUrl}></img>
-      {/* <img className="img-sm" src={props.data.images[1].imgUrl}></img>
-      <img className="img-sm" src={props.data.images[2].imgUrl}></img> */}
-        <div className="image-overlay">
-          <div className="meta">
-            <div className="meta-item">FOR SALE</div>
-            <div className="meta-item">NEW</div>
-          </div>
-          <button className="save">Save</button>
-          <button className="share">Share</button>
-          <button className="img-count">24</button>
+      <div className="top-row">
+        <div className="meta">
+          <div className="meta-item for-sale">FOR SALE</div>
+          {/* <div className="meta-item">NEW</div> */}
+        </div>
+        <div className="main-btns">
+          <button className="save trulia-btn">Save</button>
+          <button className="share trulia-btn">Share</button>
         </div>
       </div>
+      <div className="image-container" onClick={() => { props.setView('modal') }}>
+        <img className="img-lg" src={props.data.images[0].imgUrl}></img>
+      </div>
 
+      <div className="img-count">
+        <button>{props.data.imageCount}</button>
+      </div>
     </div>
   )
 }

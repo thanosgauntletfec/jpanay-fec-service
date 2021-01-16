@@ -36,30 +36,30 @@ class App extends React.Component {
 
   renderView() {
     if (!this.state.modal && !this.state.carousel) {
-      return (<Main data={this.state.data}/>)
+      return (<Main data={this.state.data} setView={this.setView}/>)
     }
     if (this.state.modal && this.state.carousel) {
       return (
         <div>
-          <Main data={this.state.data}/>
-          <Modal data={this.state.data}/>
-          <Carousel data={this.state.data}/>
+          <Main data={this.state.data} setView={this.setView}/>
+          <Modal data={this.state.data} setView={this.setView}/>
+          <Carousel data={this.state.data} setView={this.setView}/>
         </div>
       )
     }
     if (this.state.modal) {
       return (
         <div>
-          <Main data={this.state.data}/>
-          <Modal data={this.state.data}/>
+          <Main data={this.state.data} setView={this.setView}/>
+          <Modal data={this.state.data} setView={this.setView}/>
         </div>
       )
     }
     if (this.state.carousel) {
       return (
         <div>
-          <Main data={this.state.data}/>
-          <Carousel data={this.state.data}/>
+          <Main data={this.state.data} setView={this.setView}/>
+          <Carousel data={this.state.data} setView={this.setView}/>
         </div>
       )
     }
@@ -76,7 +76,6 @@ class App extends React.Component {
 }
 
 $.get('http://localhost:3000/homes/b7jve7muos', (data) => {
-      // console.log(data)
   ReactDOM.render(<App data={data}/>, document.querySelector('.app'))
 })
 
