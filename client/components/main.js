@@ -14,7 +14,7 @@ function Main(props) {
         </div>
       </div>
       <div className="image-container" onClick={() => { props.setView('modal') }}>
-        <img className="img-lg" src={props.data.images[0].imgUrl}></img>
+        <img className="img-lg" src={props.data.images[0].imgUrl} ></img>
       </div>
 
       <div className="img-count">

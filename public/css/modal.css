@@ -100,15 +100,8 @@
   flex-direction: column;
   overflow: scroll;
   height: 100%;
-  /* margin-bottom: 10px; */
   cursor: pointer;
 }
-
-/* .image-grid img{
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
-} */
 
 
 

@@ -11,9 +11,10 @@ class App extends React.Component {
     this.state = {
       data: this.props.data,
       modal: true,
-      carousel: false
+      carousel: true,
+      currImgIndex: 0
     }
-
+    this.changecurrImgIndex = this.changecurrImgIndex.bind(this)
     this.renderView = this.renderView.bind(this)
     this.setView = this.setView.bind(this)
   }
@@ -25,33 +26,37 @@ class App extends React.Component {
     })
   }
 
-  setView(view) {
+  setView(view, currImgIndex = 0) {
     if (view === 'modal') {
       this.setState({modal: !this.state.modal})
     }
     if (view === 'carousel') {
-      this.setState({carousel: !this.state.carousel})
+      this.setState({
+        carousel: !this.state.carousel,
+        currImgIndex: currImgIndex
+      })
     }
+  }
+
+  changecurrImgIndex(num) {
+    this.setState({ currImgIndex: this.state.currImgIndex + num})
   }
 
   renderView() {
     if (!this.state.modal && !this.state.carousel) {
-      // $('.app').css('filter', 'blur(0px)')
-      // $('.app').css('-webkit-filter', 'blur(0px)')
       return (<Main data={this.state.data} setView={this.setView}/>)
     }
     if (this.state.modal && this.state.carousel) {
+      console.log('Carousel loading')
       return (
         <div>
           <Main data={this.state.data} setView={this.setView}/>
           <Modal data={this.state.data} setView={this.setView}/>
-          <Carousel data={this.state.data} setView={this.setView}/>
+          <Carousel data={this.state.data} setView={this.setView} currImgIndex={this.state.currImgIndex} changecurrImgIndex={this.changecurrImgIndex}/>
         </div>
       )
     }
     if (this.state.modal) {
-      // $('body').css('filter', 'blur(8px)')
-      // $('body').css('-webkit-filter', 'blur(8px)')
       return (
         <div>
           <Modal data={this.state.data} setView={this.setView}/>
@@ -63,7 +68,7 @@ class App extends React.Component {
       return (
         <div>
           <Main data={this.state.data} setView={this.setView}/>
-          <Carousel data={this.state.data} setView={this.setView}/>
+          <Carousel data={this.state.data} setView={this.setView} currImgIndex={this.state.currImgIndex}/>
         </div>
       )
     }

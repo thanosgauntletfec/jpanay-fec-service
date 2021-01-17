@@ -27,8 +27,8 @@ function Modal(props) {
         <div className="beds-baths">{props.data.beds} Beds, {props.data.bath} Bath</div>
       </div>
       <div className="image-grid">
-        {props.data.images.map((img) => (
-          <img src={img.imgUrl}/>
+        {props.data.images.map((img, i) => (
+          <img src={img.imgUrl} key={i} onClick={()=>{ props.setView('carousel',i) }}/>
         ))
         }
       </div>
