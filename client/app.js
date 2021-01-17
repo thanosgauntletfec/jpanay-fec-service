@@ -10,7 +10,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       data: this.props.data,
-      modal: false,
+      modal: true,
       carousel: false
     }
 
@@ -36,6 +36,8 @@ class App extends React.Component {
 
   renderView() {
     if (!this.state.modal && !this.state.carousel) {
+      // $('.app').css('filter', 'blur(0px)')
+      // $('.app').css('-webkit-filter', 'blur(0px)')
       return (<Main data={this.state.data} setView={this.setView}/>)
     }
     if (this.state.modal && this.state.carousel) {
@@ -48,10 +50,12 @@ class App extends React.Component {
       )
     }
     if (this.state.modal) {
+      // $('body').css('filter', 'blur(8px)')
+      // $('body').css('-webkit-filter', 'blur(8px)')
       return (
         <div>
-          <Main data={this.state.data} setView={this.setView}/>
           <Modal data={this.state.data} setView={this.setView}/>
+          <Main data={this.state.data} setView={this.setView}/>
         </div>
       )
     }

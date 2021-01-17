@@ -5,26 +5,37 @@ body {
 }
 
 .app {
-  display: flex;
-  justify-content: center;
   height: 100%;
+  position: relative;
+  font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
+
 }
 
-.whole-container {
+.main-container {
   background-color: rgb(89, 120, 255);
   width: 990px;
-  position: relative;
+  position: fixed;
   margin-top: 100px;
   border-radius: 10px;
   height: 58%;
   min-height: 275px;
 }
 
+.image-container {
+  overflow: hidden;
+}
+
 .image-container img{
+  transition: 0.5s;
   width: 990px;
   border-radius: 10px;
   height: 100%;
   cursor: pointer;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+  overflow: hidden;
 }
 
 .top-row {
@@ -109,8 +120,7 @@ body {
   height: 40px;
   cursor: pointer;
   color: rgb(59, 65, 68);
-  font-weight: 600;
-  font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
+  font-weight: 550;
 }
 
 .trulia-btn:hover {

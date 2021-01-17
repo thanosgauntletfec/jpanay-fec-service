@@ -2,7 +2,7 @@ import React from 'react'
 
 function Main(props) {
   return (
-    <div className="whole-container">
+    <div className="main-container">
       <div className="top-row">
         <div className="meta">
           <div className="meta-item for-sale">FOR SALE</div>
