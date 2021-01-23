@@ -14,8 +14,7 @@ body {
 }
 
 .app {
-  height: 100%;
-  font-weight: 600;
+  /* font-weight: 600; */
 }
 
 .main-container {
@@ -46,7 +45,7 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  margin-left: 24px;
+  padding-left: 26px;
 }
 
 .main-img-1 {
