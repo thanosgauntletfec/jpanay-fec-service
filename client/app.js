@@ -20,7 +20,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    $.get('http://localhost:3000/homes/w93fnhlkoj', (data) => {
+    $.get('/homes/w93fnhlkoj', (data) => {
       // console.log(data)
       this.setState({data: data})
     })
@@ -91,7 +91,7 @@ class App extends React.Component {
   }
 }
 
-$.get('http://localhost:3000/homes/w93fnhlkoj', (data) => {
+$.get('/homes/w93fnhlkoj', (data) => {
   ReactDOM.render(<App data={data}/>, document.querySelector('.app'))
 })
 
