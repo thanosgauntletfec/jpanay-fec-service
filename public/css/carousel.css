@@ -1,30 +1,163 @@
-.blur-bg {
+.carousel-bg {
   width: 100%;
   height: 100%;
-  background-color: rgba(37, 37, 37, 0.699);
+  background-color: rgba(10, 10, 10, 0.89);
   position: fixed;
-  backdrop-filter: blur(8px);
-  z-index: 4;
+  /* backdrop-filter: blur(8px); */
+  z-index: 10;
+  display: flex;
+  justify-content: center;
 }
 
 .carousel-container {
-  background-color: rgb(255, 255, 255);
-  /* font-size: 14px;
+  font-size: 14px;
   position: fixed;
-  border-radius: 10px;
-  z-index: 8;
-  height: 85vh;
-  width: 90vw;
-  margin: 5vh 4vw;
-  padding: 1.2vw;
-  overflow: hidden; */
+  border-radius: 8px;
+  z-index: 12;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .carousel-nav {
-  font-size: 40px;
+
+}
+.carousel-top-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+.carousel-header-info {
+  display: flex;
+  flex-direction: row;
+  font-size: 24px;
+  color: white;
+  width: -webkit-calc(50% - 24px);
+}
+.carousel-main-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: -webkit-calc(50% - 24px);
+}
+.carousel-main-btns button {
+  cursor: pointer;
+  transition: 300ms;
+  margin: 0px 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: white;
+  border: 1px solid white;
+  text-align: center;
+  border-radius: 8px;
+}
+.carousel-main-btns button:hover {
+  background-color: #E8E9EA;
+}
+
+#schedule {
+  color: white;
+  background-color: #D93C23;
+  border: 1px solid #D93C23;;
+}
+
+#schedule:hover {
+  background-color: white;
+  color: #D93C23;
+  border: 1px solid #D93C23;;
+}
+
+.current-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  font-size: 16px;
+  color: white;
   position: fixed;
-  top: 0px;
-  color: aqua;
+  left: 30;
+  bottom: 18;
+}
+
+.carousel-nav  {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  top: 53%;
+  position: fixed;
+  justify-content: center;
+}
+
+.current-image img {
+  height: 84vh;
+}
+
+.nav svg {
+  cursor: pointer;
+  transition: 300ms;
+  height: 24px;
+  background-color: rgb(59, 65, 68);
+  border-radius: 50%;
+  padding: 12px;
+  fill: white;
+}
+
+.nav svg:hover {
+  background-color: #869099;
+}
+
+.nav-left {
+  position: fixed;
+  left: 12%;
+}
+
+.nav-right {
+  position: fixed;
+  right: 12%;
+
+}
+
+.exit-btn-div {
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+.exit-btn {
+  fill: white;
+  transition: 300ms;
+  height: 32px;
+  align-self: center;
+}
+
+.exit-btn:hover {
+  fill: #007883;
+  cursor: pointer;
+}
+
+#carousel-share {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#carousel-share svg {
+  width: 24px;
+  margin-right: 8px;
+}
+#carousel-save {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#carousel-save svg {
+  width: 22px;
+  margin-right: 8px;
 }
 
 

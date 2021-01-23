@@ -14,15 +14,11 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-// app.use(express.static('../public'))
-
 app.use('/', express.static(path.join(__dirname, '../public')))
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '../public/index.html'));
 })
-
-
 
 app.get('/dbseed', (req, res) => {
   // listingInfo: listingId, liked, address, price, beds, bath
@@ -31,22 +27,21 @@ app.get('/dbseed', (req, res) => {
   let dropImageTable = 'DROP TABLE IF EXISTS listingImages;'
   connection.query(dropInfoTable, (error, results, fields) => {
     if (error) throw error;
-    // console.log('Results: ', results);
   });
   connection.query(dropImageTable, (error, results, fields) => {
     if (error) throw error;
-    // console.log('Results: ', results);
   });
   let listingInfoTable = 'CREATE TABLE listingInfo (listingId VARCHAR(120), liked INT(10), address VARCHAR(120), price VARCHAR(120), beds VARCHAR(120), bath VARCHAR(120));'
   let listingImages = 'CREATE TABLE listingImages (listingId VARCHAR(120), ordered INT(10), imgUrl VARCHAR(120));'
   connection.query(listingInfoTable, (error, results, fields) => {
     if (error) throw error;
-    // console.log('Results: ', results);
   });
   connection.query(listingImages, (error, results, fields) => {
     if (error) throw error;
-    // console.log('Results: ', results);
   });
+
+  // https://www.trulia.com/p/ny/new-york/100-w-57th-st-11r-new-york-ny-10019--2172047819?mid=8#lil-mediaTab
+  let realImgs = ['https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/3c9cbedb42b5293b20460cff1bbe2b3a-full.webp', 'https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/be94ebdea832ec9da1a141344879e85f-full.webp', 'https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/a75f74e70c459f3a9dc72bef8b2cd081-full.webp', 'https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/e664f1209b84ad5b06310c7578a17eed-full.webp', 'https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/a96194e40a652c4b1cd340d8457d39b2-full.webp', 'https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/ca238a2b1fac43ea0496ef47dc019bc8-full.webp', 'https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/c571fac97017fafee8412902e212f297-full.webp', 'https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/047614d57c1a9f3c623808e6724572e2-full.webp', 'https://www.trulia.com/pictures/thumbs_6/zillowstatic/fp/22bc425987f797986536f9de9291d5e7-full.webp']
 
   for (let i = 0; i < 100; i++) {
     // LISTING INFO
@@ -61,29 +56,28 @@ app.get('/dbseed', (req, res) => {
     let insertInfo = `INSERT INTO listingInfo (listingId, liked, address, price, beds, bath) VALUES ("${info.listingId}", "${info.liked}", "${info.address}", "${info.price}", "${info.beds}", "${info.bath}")`
     connection.query(insertInfo, (error, results, fields) => {
       if (error) throw error;
-      // console.log('Results: ', results);
     });
 
     // LISTING IMAGES
     let randomNum = Math.random() * (20 - 10) + 10;
-    for (let u = 0; u < randomNum; u++) {
+    for (let u = 0; u < realImgs.length; u++) {
       let image = {
         listingId: info.listingId,
         order: u,
-        imgUrl: faker.image.animals()
+        imgUrl: realImgs[u]
       }
       let insertImage = `INSERT INTO listingImages (listingId, ordered, imgUrl) VALUES ("${image.listingId}", "${image.order}", "${image.imgUrl}");`
       connection.query(insertImage, (error, results, fields) => {
         if (error) throw error;
-        // console.log('Results: ', results);
       });
     }
+    if (i === 99) { res.send('Seeding Complete') }
   }
 })
 
 
 app.get('/homes/:id', (req, res) => {
-  let id = 'b7jve7muos'
+  let id = 'ijpkseguml'
   let data = {}
   let infoQuery = `SELECT * FROM listingInfo WHERE listingId = "${id}"`
   let imageQuery = `SELECT * FROM listingImages WHERE listingId = "${id}"`
