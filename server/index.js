@@ -79,14 +79,18 @@ app.get('/dbseed', (req, res) => {
 app.get('/homes/:id', (req, res) => {
   let id = 'ijpkseguml'
   let data = {}
-  let infoQuery = `SELECT * FROM listingInfo WHERE listingId = "${id}"`
-  let imageQuery = `SELECT * FROM listingImages WHERE listingId = "${id}"`
+  // let infoQuery = `SELECT * FROM listingInfo WHERE listingId = "${id}"`
+  // let imageQuery = `SELECT * FROM listingImages WHERE listingId = "${id}"`
+  let infoQuery = `SELECT * FROM listingInfo`
   new Promise((resolve, reject) => {
     connection.query(infoQuery, (error, infoResults, fields) => {
       if (error) reject(error);
+      console.log(infoResults[0])
       data = infoResults[0]
+      let imageQuery = `SELECT * FROM listingImages WHERE listingId = "${data.listingId}"`
       connection.query(imageQuery, (error, imageResults, fields) => {
         if (error) reject(error);
+        console.log(imageResults)
         data.images = imageResults
         data.imageCount = data.images.length
         resolve(data)

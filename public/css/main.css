@@ -14,7 +14,11 @@ body {
 }
 
 .app {
-  /* font-weight: 600; */
+  font-weight: bold;
+}
+
+.app button {
+  font-weight: 600;
 }
 
 .main-container {
@@ -165,7 +169,7 @@ body {
 }
 
 #share-svg{
-  width: 26px;
+  width: 24px;
 }
 
 #share {

@@ -37,8 +37,7 @@
   width: 100%;
 }
 .slider-btns button {
-  /* display: flex;
-  align-items: center; */
+  color: #3B4144;
   align-self: center;
   transition: 0.2s;
   padding: 12px 16px;
