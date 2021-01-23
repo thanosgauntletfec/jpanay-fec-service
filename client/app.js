@@ -11,7 +11,7 @@ class App extends React.Component {
     this.state = {
       data: this.props.data,
       modal: true,
-      carousel: true,
+      carousel: false,
       currImgIndex: 0
     }
     this.changecurrImgIndex = this.changecurrImgIndex.bind(this)
@@ -20,7 +20,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    $.get('http://localhost:3000/homes/b7jve7muos', (data) => {
+    $.get('/homes/w93fnhlkoj', (data) => {
       // console.log(data)
       this.setState({data: data})
     })
@@ -39,7 +39,15 @@ class App extends React.Component {
   }
 
   changecurrImgIndex(num) {
-    this.setState({ currImgIndex: this.state.currImgIndex + num})
+    console.log()
+    if (this.state.currImgIndex + num === this.state.data.images.length) {
+      this.setState({ currImgIndex: 0})
+    } else if (this.state.currImgIndex + num < 0) {
+      this.setState({ currImgIndex: this.state.data.images.length-1})
+    } else {
+      this.setState({ currImgIndex: this.state.currImgIndex + num})
+    }
+
   }
 
   renderView() {
@@ -47,12 +55,11 @@ class App extends React.Component {
       return (<Main data={this.state.data} setView={this.setView}/>)
     }
     if (this.state.modal && this.state.carousel) {
-      console.log('Carousel loading')
       return (
         <div>
-          <Main data={this.state.data} setView={this.setView}/>
-          <Modal data={this.state.data} setView={this.setView}/>
           <Carousel data={this.state.data} setView={this.setView} currImgIndex={this.state.currImgIndex} changecurrImgIndex={this.changecurrImgIndex}/>
+          <Modal data={this.state.data} setView={this.setView}/>
+          <Main data={this.state.data} setView={this.setView}/>
         </div>
       )
     }
@@ -67,8 +74,8 @@ class App extends React.Component {
     if (this.state.carousel) {
       return (
         <div>
+          <Carousel data={this.state.data} setView={this.setView} currImgIndex={this.state.currImgIndex} changecurrImgIndex={this.changecurrImgIndex}/>
           <Main data={this.state.data} setView={this.setView}/>
-          <Carousel data={this.state.data} setView={this.setView} currImgIndex={this.state.currImgIndex}/>
         </div>
       )
     }
@@ -84,7 +91,7 @@ class App extends React.Component {
   }
 }
 
-$.get('http://localhost:3000/homes/b7jve7muos', (data) => {
+$.get('/homes/w93fnhlkoj', (data) => {
   ReactDOM.render(<App data={data}/>, document.querySelector('.app'))
 })
 
