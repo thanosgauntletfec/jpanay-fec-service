@@ -43,7 +43,7 @@ function Modal(props) {
           }
         </div>
         <div className="schedule-bar">
-          <img src="http://localhost:3000/media/schedule.png"/>
+          <img src="http://localhost:3020/media/schedule.png"/>
         </div>
       </div>
     </div>

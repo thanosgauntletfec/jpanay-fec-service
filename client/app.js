@@ -4,13 +4,14 @@ import $ from 'jquery'
 import Main from './components/main'
 import Modal from './components/modal'
 import Carousel from './components/carousel'
+import './styles.scss'
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       data: this.props.data,
-      modal: true,
+      modal: false,
       carousel: false,
       currImgIndex: 0
     }
@@ -20,7 +21,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    $.get('/homes/w93fnhlkoj', (data) => {
+    $.get('http://localhost:3020/homes/w93fnhlkoj', (data) => {
       // console.log(data)
       this.setState({data: data})
     })
@@ -56,7 +57,7 @@ class App extends React.Component {
     }
     if (this.state.modal && this.state.carousel) {
       return (
-        <div>
+        <div className="modal-pos">
           <Carousel data={this.state.data} setView={this.setView} currImgIndex={this.state.currImgIndex} changecurrImgIndex={this.changecurrImgIndex}/>
           <Modal data={this.state.data} setView={this.setView}/>
           <Main data={this.state.data} setView={this.setView}/>
@@ -65,7 +66,7 @@ class App extends React.Component {
     }
     if (this.state.modal) {
       return (
-        <div>
+        <div className="modal-pos">
           <Modal data={this.state.data} setView={this.setView}/>
           <Main data={this.state.data} setView={this.setView}/>
         </div>
@@ -91,7 +92,7 @@ class App extends React.Component {
   }
 }
 
-$.get('/homes/w93fnhlkoj', (data) => {
-  ReactDOM.render(<App data={data}/>, document.querySelector('.app'))
+$.get('http://localhost:3020/homes/w93fnhlkoj', (data) => {
+  ReactDOM.render(<App data={data}/>, document.getElementById('app-jason'))
 })
 

@@ -3,16 +3,21 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const app = express()
 const mysql = require('mysql');
-const faker = require('faker')
+const faker = require('faker');
+const cors = require ('cors');
 
 const connection = mysql.createConnection({
   host     : 'localhost',
-  user     : 'root',
-  password : '',
+  user     : 'student',
+  password : 'student',
   database : 'fec'
 });
 
 connection.connect();
+
+app.use(cors({
+  origin: 'http://localhost:3080'
+}));
 
 app.use('/', express.static(path.join(__dirname, '../public')))
 
@@ -77,7 +82,7 @@ app.get('/dbseed', (req, res) => {
 
 
 app.get('/homes/:id', (req, res) => {
-  let id = 'ijpkseguml'
+  let id = 'pfs6lipfrs'
   let data = {}
   // let infoQuery = `SELECT * FROM listingInfo WHERE listingId = "${id}"`
   // let imageQuery = `SELECT * FROM listingImages WHERE listingId = "${id}"`
@@ -104,7 +109,7 @@ app.get('/homes/:id', (req, res) => {
 
 
 
-const port =  3000
+const port =  3020;
 app.listen(port, () =>  {
   console.log(`Listening on PORT: ${port}`)
 })
