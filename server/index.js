@@ -16,9 +16,7 @@ const tempData = require ('./tempdata');
 
 // connection.connect();
 
-app.use(cors({
-  origin: 'http://localhost:3080'
-}));
+app.use(cors({}));
 
 app.use('/', express.static(path.join(__dirname, '../public')))
 
