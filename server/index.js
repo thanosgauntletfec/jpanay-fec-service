@@ -16,9 +16,7 @@ const tempData = require ('./tempdata');
 
 // connection.connect();
 
-app.use(cors({
-  origin: 'ec2-18-217-26-174.us-east-2.compute.amazonaws.com'
-}));
+app.use(cors());
 
 app.use('/', express.static(path.join(__dirname, '../public')))
 

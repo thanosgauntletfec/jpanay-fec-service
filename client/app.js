@@ -21,7 +21,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    $.get('http://ec2-18-217-26-174.us-east-2.compute.amazonaws.com/homes/w93fnhlkoj', (data) => {
+    $.get('/homes/w93fnhlkoj', (data) => {
       // console.log(data)
       this.setState({data: data})
     })
@@ -92,7 +92,7 @@ class App extends React.Component {
   }
 }
 
-$.get('http://ec2-18-217-26-174.us-east-2.compute.amazonaws.com/homes/w93fnhlkoj', (data) => {
+$.get('/homes/w93fnhlkoj', (data) => {
   ReactDOM.render(<App data={data}/>, document.getElementById('app-jason'))
 })
 
