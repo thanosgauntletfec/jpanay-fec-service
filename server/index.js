@@ -109,9 +109,6 @@ app.get('/homes/:id', (req, res) => {
   */
 })
 
-
-
-
 const port =  3020;
 app.listen(port, () =>  {
   console.log(`Listening on PORT: ${port}`)
