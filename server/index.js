@@ -2,19 +2,19 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const path = require('path')
 const app = express()
-const mysql = require('mysql');
+// const mysql = require('mysql');
 const faker = require('faker');
 const cors = require ('cors');
 const tempData = require ('./tempdata');
 
-const connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'student',
-  password : 'student',
-  database : 'fec'
-});
+// const connection = mysql.createConnection({
+//   host     : 'localhost',
+//   user     : 'student',
+//   password : 'student',
+//   database : 'fec'
+// });
 
-connection.connect();
+// connection.connect();
 
 app.use(cors({
   origin: 'http://localhost:3080'
@@ -25,7 +25,7 @@ app.use('/', express.static(path.join(__dirname, '../public')))
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '../public/index.html'));
 })
-
+/*
 app.get('/dbseed', (req, res) => {
   // listingInfo: listingId, liked, address, price, beds, bath
   // listingImages: listingId, imageUrl
@@ -80,7 +80,7 @@ app.get('/dbseed', (req, res) => {
     if (i === 99) { res.send('Seeding Complete') }
   }
 })
-
+*/
 
 app.get('/homes/:id', (req, res) => {
   let id = 'pfs6lipfrs'
