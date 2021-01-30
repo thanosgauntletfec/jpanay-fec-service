@@ -5,6 +5,7 @@ const app = express()
 const mysql = require('mysql');
 const faker = require('faker');
 const cors = require ('cors');
+const tempData = require ('./tempdata');
 
 const connection = mysql.createConnection({
   host     : 'localhost',
@@ -84,8 +85,11 @@ app.get('/dbseed', (req, res) => {
 app.get('/homes/:id', (req, res) => {
   let id = 'pfs6lipfrs'
   let data = {}
+  // console.log()
+  res.send(tempData.tempData)
   // let infoQuery = `SELECT * FROM listingInfo WHERE listingId = "${id}"`
   // let imageQuery = `SELECT * FROM listingImages WHERE listingId = "${id}"`
+  /*
   let infoQuery = `SELECT * FROM listingInfo`
   new Promise((resolve, reject) => {
     connection.query(infoQuery, (error, infoResults, fields) => {
@@ -104,6 +108,7 @@ app.get('/homes/:id', (req, res) => {
   })
     .then((data) => { res.send(data) })
     .catch((err) => { res.send(err) })
+  */
 })
 
 
