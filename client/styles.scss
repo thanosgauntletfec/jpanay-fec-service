@@ -13,6 +13,8 @@ body{
     margin-left: -225px;
   }
   .carousel-bg {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(10, 10, 10, 0.89);
@@ -358,6 +360,8 @@ body{
   //modal
 
   .blur-bg {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(37, 37, 37, 0.699);
